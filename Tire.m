@@ -34,6 +34,14 @@
 	return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+	Tire *tireCopy;
+	tireCopy = [[[self class] allocWithZone:zone]
+				initWithPressure:pressure
+				andTreadDepth:treadDepth];
+	return tireCopy;
+} //copyWithZone
+
 - (void)setPressure:(float)newPressure {
 	pressure = newPressure;
 }

@@ -10,7 +10,7 @@
 @class Tire;
 @class Engine;
 
-@interface Car : NSObject
+@interface Car : NSObject <NSCopying>
 {
 	NSString *appellation;
 	Engine *engine;

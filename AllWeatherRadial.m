@@ -24,6 +24,12 @@
 	return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+	AllWeatherRadial *tireCopy = [super copyWithZone:zone];
+	[tireCopy setRainHandling:rainHandling];
+	[tireCopy setSnowHandling:snowHandling];
+	return tireCopy;
+}
 
 - (NSString *)description {
 	NSMutableString *desc = 

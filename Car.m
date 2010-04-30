@@ -25,6 +25,25 @@
 @synthesize name = appellation;
 @synthesize engine;
 
+-(id)copyWithZone:(NSZone *)zone {
+	Car *carCopy;
+	carCopy = [[[self class] allocWithZone:zone] init];
+	carCopy.name = self.name;
+	
+	Engine *engineCopy = [[engine copy] autorelease];
+	carCopy.engine = engineCopy;
+	
+	int i;
+	for (i = 0; i < 4; i++) {
+		Tire *tireCopy;
+		tireCopy = [[self tireAtIndex:i] copy];
+		[tireCopy autorelease];
+		[carCopy setTire:tireCopy atIndex:i];
+	}
+	return carCopy;
+	
+}
+
 - (void)setTire:(Tire *)tire
 		atIndex:(int)index {
 	[tires replaceObjectAtIndex:index withObject:tire];
